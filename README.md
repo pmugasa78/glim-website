@@ -13,11 +13,15 @@ npm run lint         # prettier + eslint
 
 ## Deploy
 
-Every page is prerendered to `build/` (adapter-static). `wrangler.jsonc` serves that folder as Workers static assets, with no Worker code.
+Pushing to `main` deploys automatically (`.github/workflows/deploy.yml`): it lints, type-checks and builds, applies any new D1 migrations, then runs `wrangler deploy`. Pull requests get the same checks without deploying. The workflow needs two repository secrets:
+
+- `CLOUDFLARE_API_TOKEN`: an account API token with **Workers Scripts: Edit** and **D1: Edit**.
+- `TURNSTILE_SECRET`: the secret key of the "Glim website" Turnstile widget.
+
+Every page is prerendered to `build/` (adapter-static) and served as Workers static assets; the Worker script only runs for `/api/*`.
 
 ```sh
 npm run preview:cf   # build and serve locally the way Cloudflare will
-npm run deploy       # build and deploy (needs `npx wrangler login` once)
 ```
 
 ## Beta sign-ups

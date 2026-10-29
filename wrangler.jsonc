@@ -3,6 +3,7 @@
 	// script only runs for /api/*, which handles the beta sign-up form.
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "glim-website",
+	"account_id": "7f5e0b18b3690d66f98da8d2bc747a5c",
 	"main": "worker/index.ts",
 	"compatibility_date": "2026-10-29",
 	"observability": { "enabled": true },
@@ -22,5 +23,6 @@
 			"migrations_dir": "migrations"
 		}
 	]
-	// Secret, set with `npx wrangler secret put TURNSTILE_SECRET` (and in .dev.vars locally).
+	// Secret TURNSTILE_SECRET comes from GitHub at deploy time (see .github/workflows/deploy.yml),
+	// and from .dev.vars locally.
 }
