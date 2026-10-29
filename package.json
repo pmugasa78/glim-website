@@ -8,12 +8,15 @@
 		"build": "vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
-		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json && tsc -p worker",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --write .",
 		"deploy": "npm run build && wrangler deploy",
-		"preview:cf": "npm run build && wrangler dev"
+		"preview:cf": "npm run build && wrangler dev",
+		"types:worker": "wrangler types",
+		"db:migrate:local": "wrangler d1 migrations apply glim-beta --local",
+		"db:migrate": "wrangler d1 migrations apply glim-beta --remote"
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",

@@ -29,12 +29,9 @@
 				See if the power, water or internet is on in your suburb, right now. Reported by your
 				neighbours.
 			</p>
-			<div class="actions">
-				<div class="stores">
-					<StoreButton store="google" />
-					<StoreButton store="apple" />
-				</div>
-				<a class="text-link" href="#how-it-works">How it works</a>
+			<div class="actions stores">
+				<StoreButton store="google" />
+				<StoreButton store="apple" />
 			</div>
 		</div>
 
@@ -133,9 +130,9 @@
 				The more neighbours report, the better everyone knows. Glim is free and needs no account.
 			</p>
 		</div>
-		<div class="stores">
-			<StoreButton store="google" tone="sun" />
-			<StoreButton store="apple" tone="sun" />
+		<div class="cta-action">
+			<a class="join" href={resolve('/beta')}>Join the beta</a>
+			<small>Coming soon to Google Play and the App Store</small>
 		</div>
 	</div>
 </section>
@@ -474,6 +471,40 @@
 
 	.cta-copy {
 		flex: 1 1 320px;
+	}
+
+	.cta-action {
+		display: grid;
+		justify-items: center;
+		gap: 10px;
+	}
+
+	.join {
+		display: inline-grid;
+		place-items: center;
+		min-height: 58px;
+		padding: 0 34px;
+		border-radius: 18px;
+		background: var(--sun);
+		box-shadow: 0 5px 0 var(--sun-edge);
+		color: var(--ink);
+		font-size: 19px;
+		font-weight: 900;
+		text-decoration: none;
+		transition:
+			translate 0.12s ease,
+			box-shadow 0.12s ease;
+	}
+
+	.join:hover {
+		translate: 0 2px;
+		box-shadow: 0 3px 0 var(--sun-edge);
+	}
+
+	.cta-action small {
+		color: #c9cfe3;
+		font-size: 13px;
+		font-weight: 700;
 	}
 
 	.cta p {

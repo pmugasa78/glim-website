@@ -9,6 +9,15 @@ export const CONTACT_EMAIL = 'hello@glim.co.zw';
 export const PLAY_STORE_URL: string | null = null;
 export const APP_STORE_URL: string | null = null;
 
+/** Beta testers' WhatsApp group invite. Null hides the button on the thank-you page. */
+export const WHATSAPP_GROUP_URL: string | null = null;
+
+/**
+ * Turnstile (Cloudflare's bot check) on the beta form. This is Cloudflare's always-pass test key;
+ * swap in the real site key from the Cloudflare dashboard before going live.
+ */
+export const TURNSTILE_SITE_KEY = '1x00000000000000000000AA';
+
 /** When the privacy policy and terms last changed. */
 export const POLICY_UPDATED = '29 October 2026';
 

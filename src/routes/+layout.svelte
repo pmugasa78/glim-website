@@ -62,6 +62,7 @@
 				href={resolve('/contact')}
 				aria-current={page.url.pathname === '/contact' ? 'page' : undefined}>Contact</a
 			>
+			<a class="beta" href={resolve('/beta')}>Join the beta</a>
 		</nav>
 	</div>
 </header>
@@ -149,9 +150,27 @@
 		border-bottom-color: currentColor;
 	}
 
+	nav {
+		align-items: center;
+	}
+
+	nav .beta {
+		padding: 8px 14px;
+		border: 0;
+		border-radius: 999px;
+		background: var(--ink);
+		color: var(--white);
+	}
+
+	nav .beta:hover {
+		background: var(--ink-soft);
+	}
+
 	/* "How it works" lives on the home page; on small screens keep the bar to the essentials. */
+	/* On phones the header keeps Contact and the beta; Privacy is in the footer. */
 	@media (max-width: 480px) {
-		header nav a:first-child {
+		header nav a:first-child,
+		header nav a:nth-child(2) {
 			display: none;
 		}
 

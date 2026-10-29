@@ -21,7 +21,9 @@
 	const body = $derived(onDark ? '#FFD21F' : '#1B2340');
 	const tail = $derived(dim ? '#5A6690' : onLight ? '#FFD21F' : '#FFF3B0');
 	const glint = $derived(dim ? '#7A86AE' : '#FFFFFF');
-	const tip = $derived(dim ? '#5A6690' : '#FFFFFF');
+	const tip = $derived(dim ? '#5A6690' : onLight ? '#FFD21F' : '#FFFFFF');
+	// White wings vanish on a white page, so there they're a soft grey.
+	const wing = $derived(onLight ? '#E1E7F0' : '#FFFFFF');
 </script>
 
 <svg
@@ -41,7 +43,7 @@
 		rx="28"
 		ry="15"
 		transform="rotate(-35 46 72)"
-		fill="#FFFFFF"
+		fill={wing}
 		opacity="0.92"
 	/>
 	<ellipse
@@ -50,7 +52,7 @@
 		rx="28"
 		ry="15"
 		transform="rotate(35 114 72)"
-		fill="#FFFFFF"
+		fill={wing}
 		opacity="0.92"
 	/>
 	<ellipse cx="80" cy="114" rx="27" ry="31" fill={tail} />
