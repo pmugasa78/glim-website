@@ -24,8 +24,11 @@
 <section class="hero">
 	<div class="wrap hero-inner">
 		<div class="hero-copy">
-			<h1>One tap tells your neighbours</h1>
-			<p class="lead">Power off? Water cut? Internet down? Report it with one tap. No typing.</p>
+			<h1>Power back yet? Glim knows.</h1>
+			<p class="lead">
+				Live reports from your neighbours on power, water and internet, and an alert as soon as it’s
+				back.
+			</p>
 			<div class="actions stores">
 				<StoreButton store="google" />
 				<StoreButton store="apple" />
