@@ -24,11 +24,8 @@
 <section class="hero">
 	<div class="wrap hero-inner">
 		<div class="hero-copy">
-			<h1>Know before the lights go.</h1>
-			<p class="lead">
-				See if the power, water or internet is on in your suburb, right now. Reported by your
-				neighbours.
-			</p>
+			<h1>One tap tells your neighbours</h1>
+			<p class="lead">Power off? Water cut? Internet down? Report it with one tap. No typing.</p>
 			<div class="actions stores">
 				<StoreButton store="google" />
 				<StoreButton store="apple" />
