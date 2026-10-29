@@ -15,7 +15,7 @@
 		},
 		{
 			title: 'Free',
-			text: 'No ads and nothing to pay. Glim works because neighbours help each other.'
+			text: 'Nothing to pay, ever. Glim works because neighbours help each other.'
 		}
 	];
 </script>

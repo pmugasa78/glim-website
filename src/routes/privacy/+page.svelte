@@ -22,7 +22,7 @@
 			Your reports say which suburb they’re for, under a random ID that isn’t linked to who you are.
 		</li>
 		<li>Your places, settings and report history stay on your phone.</li>
-		<li>We don’t sell information, and Glim has no ads.</li>
+		<li>We don’t sell your information.</li>
 	</ul>
 
 	<h2>What stays on your phone</h2>
