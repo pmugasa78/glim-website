@@ -33,6 +33,7 @@ To go live, once:
 
 1. `npx wrangler d1 create glim-beta` and put the id it prints in `wrangler.jsonc`, then `npm run db:migrate`.
 2. Create a Turnstile widget in the Cloudflare dashboard for the site's domain. Put its site key in `TURNSTILE_SITE_KEY` (`src/lib/site.ts`) and its secret in `npx wrangler secret put TURNSTILE_SECRET`.
+3. `WHATSAPP_GROUP_URL` in `src/lib/site.ts` is the testers' WhatsApp group shown on the thank-you page; set it to `null` to hide the button.
 
 ## Before launch
 
