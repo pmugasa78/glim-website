@@ -3,6 +3,7 @@
 	import '@fontsource-variable/nunito';
 	import '../app.css';
 
+	import { onNavigate } from '$app/navigation';
 	import { page } from '$app/state';
 	import Bee from '#lib/brand/Bee.svelte';
 	import { COMPANY, DESCRIPTION, SITE_URL, TAGLINE } from '#lib';
@@ -14,6 +15,17 @@
 	const title = $derived(page.data.title ? `${page.data.title} · Glim` : `Glim · ${TAGLINE}`);
 	const description = $derived(page.data.description ?? DESCRIPTION);
 	const year = new Date().getFullYear();
+
+	// Cross-fade between pages where the browser supports view transitions.
+	onNavigate((navigation) => {
+		if (!document.startViewTransition) return;
+		return new Promise((resolve) => {
+			document.startViewTransition(async () => {
+				resolve();
+				await navigation.complete;
+			});
+		});
+	});
 </script>
 
 <svelte:head>

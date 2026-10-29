@@ -3,6 +3,7 @@
 	import Bee from '#lib/brand/Bee.svelte';
 	import Skyline from '#lib/brand/Skyline.svelte';
 	import StoreButton from '#lib/components/StoreButton.svelte';
+	import { reveal } from '#lib';
 
 	const PROMISES = [
 		{
@@ -52,9 +53,9 @@
 
 <section id="how-it-works" class="how">
 	<div class="wrap">
-		<h2>How Glim works</h2>
+		<h2 {@attach reveal()}>How Glim works</h2>
 		<ol class="steps">
-			<li class="step">
+			<li class="step" {@attach reveal(80)}>
 				<div class="art art-status" aria-hidden="true">
 					<div class="mini-hero">
 						<Bee size={84} dim />
@@ -65,7 +66,7 @@
 				<h3>Know before the lights go</h3>
 				<p>Open Glim and see what’s on and off in your suburb, from people who live there.</p>
 			</li>
-			<li class="step">
+			<li class="step" {@attach reveal(160)}>
 				<div class="art art-report" aria-hidden="true">
 					<span class="chip power">Power off</span>
 					<span class="chip water">Water cut</span>
@@ -90,7 +91,7 @@
 				<h3>One tap tells your neighbours</h3>
 				<p>Power off? Water cut? Internet down? Report it in a second. No typing.</p>
 			</li>
-			<li class="step">
+			<li class="step" {@attach reveal(240)}>
 				<div class="art art-alert" aria-hidden="true">
 					<div class="notice">
 						<Bee size={40} />
@@ -110,10 +111,10 @@
 
 <section class="promises">
 	<div class="wrap">
-		<h2>Simple, and private by design</h2>
+		<h2 {@attach reveal()}>Simple, and private by design</h2>
 		<ul>
-			{#each PROMISES as promise (promise.title)}
-				<li>
+			{#each PROMISES as promise, index (promise.title)}
+				<li {@attach reveal(80 * (index + 1))}>
 					<h3>{promise.title}</h3>
 					<p>{promise.text}</p>
 				</li>
@@ -124,7 +125,7 @@
 </section>
 
 <section class="cta">
-	<div class="wrap cta-inner">
+	<div class="wrap cta-inner" {@attach reveal()}>
 		<Bee size={120} onDark />
 		<div class="cta-copy">
 			<h2>Be the first in your suburb</h2>
@@ -144,6 +145,41 @@
 	.hero {
 		background: var(--sun);
 		overflow: hidden;
+	}
+
+	.hero-copy > * {
+		animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+	}
+
+	.hero-copy > :nth-child(2) {
+		animation-delay: 0.08s;
+	}
+
+	.hero-copy > :nth-child(3) {
+		animation-delay: 0.16s;
+	}
+
+	.hero-art {
+		animation: settle 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+	}
+
+	.status-card {
+		animation: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.65s both;
+	}
+
+	/* Individual translate/scale, so they don't fight the transforms used for layout and floating. */
+	@keyframes rise {
+		from {
+			opacity: 0;
+			translate: 0 14px;
+		}
+	}
+
+	@keyframes settle {
+		from {
+			opacity: 0;
+			scale: 0.94;
+		}
 	}
 
 	.hero-inner {
@@ -257,6 +293,17 @@
 		margin: 36px 0 0;
 		padding: 0;
 		list-style: none;
+	}
+
+	.art {
+		transition:
+			translate 0.25s ease,
+			box-shadow 0.25s ease;
+	}
+
+	.step:hover .art {
+		translate: 0 -4px;
+		box-shadow: 0 12px 28px rgba(27, 35, 64, 0.1);
 	}
 
 	.step h3 {

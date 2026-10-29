@@ -78,7 +78,33 @@ a {
 	padding: 0 var(--gutter);
 }
 
+/* Scroll reveals, added by the `reveal` attachment only when motion is welcome. */
+.reveal {
+	opacity: 0;
+	translate: 0 18px;
+	transition:
+		opacity 0.6s ease,
+		translate 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.revealed {
+	opacity: 1;
+	translate: none;
+}
+
+/* A soft cross-fade between pages. */
+::view-transition-old(root),
+::view-transition-new(root) {
+	animation-duration: 0.22s;
+}
+
 @media (prefers-reduced-motion: reduce) {
+	::view-transition-group(*),
+	::view-transition-old(*),
+	::view-transition-new(*) {
+		animation: none !important;
+	}
+
 	html {
 		scroll-behavior: auto;
 	}
