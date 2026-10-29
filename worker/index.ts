@@ -9,9 +9,7 @@
  * and a per-connection limit on how often the form can be sent.
  */
 
-const PHONES = ['android', 'iphone'];
-
-export type Problem = 'email' | 'suburb' | 'phone' | 'consent' | 'busy' | 'server';
+export type Problem = 'email' | 'busy' | 'server';
 
 export default {
 	async fetch(request, env) {
@@ -48,19 +46,15 @@ export default {
 		if (field('website')) return reply();
 
 		const email = field('email').toLowerCase();
-		const suburb = field('suburb').replace(/\s+/g, ' ');
-		const phone = field('phone');
 		if (email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return reply('email');
-		if (suburb.length < 2 || suburb.length > 80) return reply('suburb');
-		if (!PHONES.includes(phone)) return reply('phone');
-		if (field('consent') !== 'yes') return reply('consent');
 
+		// Signing up again with the same email just counts as joining again.
 		try {
 			await env.DB.prepare(
-				`INSERT INTO beta_signups (email, suburb, phone) VALUES (?1, ?2, ?3)
-				 ON CONFLICT (email) DO UPDATE SET suburb = ?2, phone = ?3, updated_at = datetime('now')`
+				`INSERT INTO beta_signups (email) VALUES (?1)
+				 ON CONFLICT (email) DO UPDATE SET updated_at = datetime('now')`
 			)
-				.bind(email, suburb, phone)
+				.bind(email)
 				.run();
 		} catch (error) {
 			console.error('Could not save beta sign-up', error);

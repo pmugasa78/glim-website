@@ -77,11 +77,10 @@
 
 	<h2>Joining the beta</h2>
 	<p>
-		If you sign up on this website to test Glim before launch, we keep your email address, your
-		suburb, whether you use Android or iPhone, and when you signed up. We use them to invite you to
-		test the app, to send you updates about the beta, and to decide which suburbs to open first. To
-		invite you, we add your email to Glim’s tester list on Google Play (or Apple’s TestFlight on
-		iPhone). We delete beta sign-ups once the beta ends, or sooner if you ask.
+		If you sign up on this website to test Glim before launch, we keep your email address and when
+		you signed up. We use it only to invite you to test the app and to send you updates about the
+		beta. To invite you, we add your email to Glim’s tester list on Google Play (or Apple’s
+		TestFlight on iPhone). We delete beta sign-ups once the beta ends, or sooner if you ask.
 	</p>
 
 	<h2>Who helps us run Glim</h2>

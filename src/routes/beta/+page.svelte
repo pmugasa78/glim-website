@@ -6,9 +6,6 @@
 
 	const PROBLEMS: Record<string, string> = {
 		email: 'Please check your email address.',
-		suburb: 'Please tell us your suburb.',
-		phone: 'Please choose Android or iPhone.',
-		consent: 'Please tick the box so we can contact you.',
 		busy: 'Lots of sign-ups from your connection just now. Please try again in a minute.',
 		server: 'Something went wrong on our side. Please try again in a moment.'
 	};
@@ -60,43 +57,14 @@
 	<form method="post" action="/api/beta" onsubmit={submit}>
 		<label class="field">
 			<span class="label">Email</span>
-			<input name="email" type="email" autocomplete="email" required maxlength="254" />
-			<span class="hint">On Android, use the Google account you use on the Play Store.</span>
-		</label>
-
-		<label class="field">
-			<span class="label">Your suburb</span>
 			<input
-				name="suburb"
-				type="text"
+				name="email"
+				type="email"
+				autocomplete="email"
 				required
-				minlength="2"
-				maxlength="80"
-				placeholder="e.g. Avondale, Harare"
+				maxlength="254"
+				placeholder="you@gmail.com"
 			/>
-			<span class="hint">So we can open Glim suburb by suburb.</span>
-		</label>
-
-		<fieldset class="field">
-			<legend class="label">Your phone</legend>
-			<div class="choices">
-				<label class="choice">
-					<input type="radio" name="phone" value="android" required />
-					<span>Android</span>
-				</label>
-				<label class="choice">
-					<input type="radio" name="phone" value="iphone" />
-					<span>iPhone</span>
-				</label>
-			</div>
-		</fieldset>
-
-		<label class="consent">
-			<input type="checkbox" name="consent" value="yes" required />
-			<span>
-				Glim can use these details to invite me to test the app and send me beta updates. See our
-				<a href={resolve('/privacy')}>privacy policy</a>.
-			</span>
 		</label>
 
 		<!-- Left empty by people (it's hidden); bots that fill every field give themselves away. -->
@@ -110,6 +78,10 @@
 		{/if}
 
 		<button type="submit" disabled={sending}>{sending ? 'Joining…' : 'Join the beta'}</button>
+		<p class="note">
+			We’ll only use your email to invite you to the beta.
+			<a href={resolve('/privacy')}>Privacy policy</a>
+		</p>
 	</form>
 </section>
 
@@ -158,12 +130,6 @@
 		font-weight: 900;
 	}
 
-	.hint {
-		font-size: 14px;
-		font-weight: 600;
-		color: var(--ink-muted);
-	}
-
 	input[type='email'],
 	input[type='text'] {
 		width: 100%;
@@ -188,76 +154,25 @@
 		font-weight: 600;
 	}
 
-	.choices {
-		display: flex;
-		gap: 10px;
-		margin-top: 2px;
-	}
-
-	.choice {
-		position: relative;
-		flex: 1;
-	}
-
-	/* Hidden visually but still focusable and announced; the pill shows the choice. */
-	.choice input {
-		position: absolute;
-		opacity: 0;
-		inset: 0;
-		margin: 0;
-	}
-
-	.choice span {
-		display: grid;
-		place-items: center;
-		height: 50px;
-		border: 2px solid var(--ink);
-		border-radius: 999px;
-		background: var(--white);
-		font-weight: 900;
-		transition:
-			background 0.15s ease,
-			color 0.15s ease;
-	}
-
-	.choice input:checked + span {
-		background: var(--ink);
-		color: var(--white);
-	}
-
-	.choice input:focus-visible + span {
-		outline: 3px solid var(--ink);
-		outline-offset: 3px;
-	}
-
-	.consent {
-		display: flex;
-		gap: 12px;
-		align-items: flex-start;
-		font-size: 15px;
-		font-weight: 600;
-		color: var(--ink-muted);
-	}
-
-	.consent input {
-		flex: none;
-		width: 22px;
-		height: 22px;
-		margin-top: 1px;
-		accent-color: var(--ink);
-	}
-
-	.consent a {
-		color: var(--ink);
-		font-weight: 800;
-	}
-
 	.trap {
 		position: absolute;
 		left: -10000px;
 		width: 1px;
 		height: 1px;
 		overflow: hidden;
+	}
+
+	.note {
+		margin-top: -8px;
+		font-size: 14px;
+		font-weight: 600;
+		color: var(--ink-muted);
+		text-align: center;
+	}
+
+	.note a {
+		color: var(--ink);
+		font-weight: 800;
 	}
 
 	.problem {

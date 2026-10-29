@@ -23,7 +23,7 @@ npm run preview:cf   # build and serve locally the way Cloudflare will
 
 ## Beta sign-ups
 
-`/beta` is a form that posts to `/api/beta`, handled by `worker/index.ts`, which saves the sign-up to the D1 database `glim-beta` (schema in `migrations/`). There's no visible bot check: a hidden `website` field catches bots that fill in every field, and the `SIGNUP_LIMIT` rate limit allows 10 sign-ups a minute per connection.
+`/beta` is a form that posts to `/api/beta`, handled by `worker/index.ts`, which saves the email to the D1 database `glim-beta` (schema in `migrations/`). There's no visible bot check: a hidden `website` field catches bots that fill in every field, and the `SIGNUP_LIMIT` rate limit allows 10 sign-ups a minute per connection.
 
 ```sh
 npm run db:migrate:local   # create the table in the local database
