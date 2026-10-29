@@ -1,6 +1,6 @@
 # Glim website
 
-Landing page, privacy policy, terms and contact page for [Glim](https://glim.co.zw), built with SvelteKit and served as static files from Cloudflare Workers.
+Landing page, privacy policy, terms and contact page for [Glim](https://getglim.app), built with SvelteKit and served as static files from Cloudflare Workers.
 
 ## Develop
 

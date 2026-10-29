@@ -85,7 +85,7 @@
 						>
 					</span>
 				</div>
-				<h3>Report it in a second</h3>
+				<h3>One tap tells your neighbours</h3>
 				<p>Power off? Water cut? Internet down? Report it in a second. No typing.</p>
 			</li>
 			<li class="step" {@attach reveal(240)}>

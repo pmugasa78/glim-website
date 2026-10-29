@@ -7,6 +7,8 @@
 	"main": "worker/index.ts",
 	"compatibility_date": "2026-10-29",
 	"observability": { "enabled": true },
+	// Served on Glim's own domain; the zone is on the same Cloudflare account.
+	"routes": [{ "pattern": "getglim.app", "custom_domain": true }],
 	"assets": {
 		"directory": "./build",
 		"binding": "ASSETS",
