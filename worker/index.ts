@@ -4,12 +4,14 @@
  *
  * The form posts here directly, so it works without JavaScript: plain posts get redirected to
  * the thank-you page (or back to the form with a problem), and fetches asking for JSON get JSON.
+ *
+ * Bots are kept out without bothering people: a hidden "website" field that only bots fill in,
+ * and a per-connection limit on how often the form can be sent.
  */
 
-const SITEVERIFY_URL = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
 const PHONES = ['android', 'iphone'];
 
-export type Problem = 'email' | 'suburb' | 'phone' | 'consent' | 'verify' | 'server';
+export type Problem = 'email' | 'suburb' | 'phone' | 'consent' | 'busy' | 'server';
 
 export default {
 	async fetch(request, env) {
@@ -22,12 +24,17 @@ export default {
 		const wantsJson = request.headers.get('Accept')?.includes('application/json') ?? false;
 		const reply = (problem?: Problem) => {
 			if (wantsJson) {
-				const status = !problem ? 200 : problem === 'server' ? 500 : 400;
+				const status = !problem ? 200 : problem === 'server' ? 500 : problem === 'busy' ? 429 : 400;
 				return Response.json(problem ? { ok: false, problem } : { ok: true }, { status });
 			}
 			const to = problem ? `/beta?problem=${problem}` : '/beta/thanks';
 			return Response.redirect(new URL(to, url).toString(), 303);
 		};
+
+		// Generous, since mobile networks put many people behind one address.
+		const ip = request.headers.get('CF-Connecting-IP') ?? 'unknown';
+		const { success } = await env.SIGNUP_LIMIT.limit({ key: ip });
+		if (!success) return reply('busy');
 
 		let form: FormData;
 		try {
@@ -37,6 +44,9 @@ export default {
 		}
 		const field = (name: string) => String(form.get(name) ?? '').trim();
 
+		// A bot filled in the hidden field: look like it worked, but keep nothing.
+		if (field('website')) return reply();
+
 		const email = field('email').toLowerCase();
 		const suburb = field('suburb').replace(/\s+/g, ' ');
 		const phone = field('phone');
@@ -44,13 +54,6 @@ export default {
 		if (suburb.length < 2 || suburb.length > 80) return reply('suburb');
 		if (!PHONES.includes(phone)) return reply('phone');
 		if (field('consent') !== 'yes') return reply('consent');
-
-		const human = await verifyTurnstile(
-			field('cf-turnstile-response'),
-			env.TURNSTILE_SECRET,
-			request.headers.get('CF-Connecting-IP')
-		);
-		if (!human) return reply('verify');
 
 		try {
 			await env.DB.prepare(
@@ -66,21 +69,3 @@ export default {
 		return reply();
 	}
 } satisfies ExportedHandler<Env>;
-
-/** Checks the Turnstile token with Cloudflare; each token works once, for five minutes. */
-async function verifyTurnstile(token: string, secret: string, ip: string | null) {
-	if (!token || token.length > 2048) return false;
-	try {
-		const response = await fetch(SITEVERIFY_URL, {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({ secret, response: token, remoteip: ip ?? undefined }),
-			signal: AbortSignal.timeout(8000)
-		});
-		const result: { success?: boolean } = await response.json();
-		return result.success === true;
-	} catch (error) {
-		console.error('Turnstile check failed', error);
-		return false;
-	}
-}

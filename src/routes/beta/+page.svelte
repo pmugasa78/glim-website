@@ -3,20 +3,18 @@
 	import { resolve } from '$app/paths';
 	import { onMount } from 'svelte';
 	import Bee from '#lib/brand/Bee.svelte';
-	import { TURNSTILE_SITE_KEY, turnstile } from '#lib';
 
 	const PROBLEMS: Record<string, string> = {
 		email: 'Please check your email address.',
 		suburb: 'Please tell us your suburb.',
 		phone: 'Please choose Android or iPhone.',
 		consent: 'Please tick the box so we can contact you.',
-		verify: 'We couldn’t check you’re not a robot. Please try again.',
+		busy: 'Lots of sign-ups from your connection just now. Please try again in a minute.',
 		server: 'Something went wrong on our side. Please try again in a moment.'
 	};
 
 	let problem = $state<string | null>(null);
 	let sending = $state(false);
-	const widget: { reset?: () => void } = {};
 
 	// Without JavaScript the form posts straight to the server, which sends people back here with
 	// ?problem=… if something was wrong.
@@ -45,8 +43,6 @@
 		} catch {
 			problem = 'You seem to be offline. Please check your connection and try again.';
 		}
-		// Each bot-check token works once, so get a new one for the next try.
-		widget.reset?.();
 		sending = false;
 	}
 </script>
@@ -103,7 +99,11 @@
 			</span>
 		</label>
 
-		<div class="check" {@attach turnstile(TURNSTILE_SITE_KEY, widget)}></div>
+		<!-- Left empty by people (it's hidden); bots that fill every field give themselves away. -->
+		<label class="trap" aria-hidden="true">
+			Website
+			<input name="website" type="text" tabindex="-1" autocomplete="off" />
+		</label>
 
 		{#if problem}
 			<p class="problem" role="alert">{problem}</p>
@@ -252,8 +252,12 @@
 		font-weight: 800;
 	}
 
-	.check {
-		min-height: 65px;
+	.trap {
+		position: absolute;
+		left: -10000px;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
 	}
 
 	.problem {

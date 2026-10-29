@@ -13,10 +13,7 @@ npm run lint         # prettier + eslint
 
 ## Deploy
 
-Pushing to `main` deploys automatically (`.github/workflows/deploy.yml`): it lints, type-checks and builds, applies any new D1 migrations, then runs `wrangler deploy`. Pull requests get the same checks without deploying. The workflow needs two repository secrets:
-
-- `CLOUDFLARE_API_TOKEN`: an account API token with **Workers Scripts: Edit** and **D1: Edit**.
-- `TURNSTILE_SECRET`: the secret key of the "Glim website" Turnstile widget.
+Pushing to `main` deploys automatically (`.github/workflows/deploy.yml`): it lints, type-checks and builds, applies any new D1 migrations, then runs `wrangler deploy`. Pull requests get the same checks without deploying. The workflow needs one repository secret, `CLOUDFLARE_API_TOKEN`: an account API token with **Workers Scripts: Edit**, **D1: Edit** and **Workers Routes: Edit**.
 
 Every page is prerendered to `build/` (adapter-static) and served as Workers static assets; the Worker script only runs for `/api/*`.
 
@@ -26,14 +23,12 @@ npm run preview:cf   # build and serve locally the way Cloudflare will
 
 ## Beta sign-ups
 
-`/beta` is a form that posts to `/api/beta`, handled by `worker/index.ts`. It checks the visitor with Cloudflare Turnstile and saves the sign-up to the D1 database `glim-beta` (schema in `migrations/`). Locally, `.dev.vars` holds Turnstile's always-pass test secret.
+`/beta` is a form that posts to `/api/beta`, handled by `worker/index.ts`, which saves the sign-up to the D1 database `glim-beta` (schema in `migrations/`). There's no visible bot check: a hidden `website` field catches bots that fill in every field, and the `SIGNUP_LIMIT` rate limit allows 10 sign-ups a minute per connection.
 
 ```sh
 npm run db:migrate:local   # create the table in the local database
 npx wrangler d1 execute glim-beta --remote --command "SELECT email, suburb, phone, created_at FROM beta_signups"
 ```
-
-Set up on Cloudflare (account `7f5e0b18…`): the D1 database `glim-beta` (id in `wrangler.jsonc`, table created), and the Turnstile widget "Glim website", whose site key is `TURNSTILE_SITE_KEY` in `src/lib/site.ts`. Its secret goes in with `npx wrangler secret put TURNSTILE_SECRET`. On localhost the form uses Cloudflare's test key instead, to match `.dev.vars`.
 
 `WHATSAPP_GROUP_URL` in `src/lib/site.ts` is the testers' WhatsApp group shown on the thank-you page; set it to `null` to hide the button.
 

@@ -24,7 +24,9 @@
 			"database_id": "d3b1c465-e454-471a-bb1d-cc53188464d3",
 			"migrations_dir": "migrations"
 		}
+	],
+	// Limits how often one connection can send the beta form (see worker/index.ts).
+	"ratelimits": [
+		{ "name": "SIGNUP_LIMIT", "namespace_id": "2001", "simple": { "limit": 10, "period": 60 } }
 	]
-	// Secret TURNSTILE_SECRET comes from GitHub at deploy time (see .github/workflows/deploy.yml),
-	// and from .dev.vars locally.
 }

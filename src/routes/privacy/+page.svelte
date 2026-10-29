@@ -95,10 +95,7 @@
 			<strong>Firebase Cloud Messaging</strong> (or Apple’s push service on iPhone) deliver notifications
 			to your phone.
 		</li>
-		<li>
-			<strong>Cloudflare</strong> hosts this website, stores beta sign-ups, and runs Turnstile, which
-			checks the sign-up form is used by a person and not a bot.
-		</li>
+		<li><strong>Cloudflare</strong> hosts this website and stores beta sign-ups.</li>
 	</ul>
 	<p>
 		Some of these providers process information outside Zimbabwe and South Africa. We only use
