@@ -18,8 +18,7 @@
 		{
 			"binding": "DB",
 			"database_name": "glim-beta",
-			// Replace with the id from `npx wrangler d1 create glim-beta` before the first deploy.
-			"database_id": "00000000-0000-0000-0000-000000000000",
+			"database_id": "d3b1c465-e454-471a-bb1d-cc53188464d3",
 			"migrations_dir": "migrations"
 		}
 	]

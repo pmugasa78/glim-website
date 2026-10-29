@@ -29,11 +29,9 @@ npm run db:migrate:local   # create the table in the local database
 npx wrangler d1 execute glim-beta --remote --command "SELECT email, suburb, phone, created_at FROM beta_signups"
 ```
 
-To go live, once:
+Set up on Cloudflare (account `7f5e0b18…`): the D1 database `glim-beta` (id in `wrangler.jsonc`, table created), and the Turnstile widget "Glim website", whose site key is `TURNSTILE_SITE_KEY` in `src/lib/site.ts`. Its secret goes in with `npx wrangler secret put TURNSTILE_SECRET`. On localhost the form uses Cloudflare's test key instead, to match `.dev.vars`.
 
-1. `npx wrangler d1 create glim-beta` and put the id it prints in `wrangler.jsonc`, then `npm run db:migrate`.
-2. Create a Turnstile widget in the Cloudflare dashboard for the site's domain. Put its site key in `TURNSTILE_SITE_KEY` (`src/lib/site.ts`) and its secret in `npx wrangler secret put TURNSTILE_SECRET`.
-3. `WHATSAPP_GROUP_URL` in `src/lib/site.ts` is the testers' WhatsApp group shown on the thank-you page; set it to `null` to hide the button.
+`WHATSAPP_GROUP_URL` in `src/lib/site.ts` is the testers' WhatsApp group shown on the thank-you page; set it to `null` to hide the button.
 
 ## Before launch
 

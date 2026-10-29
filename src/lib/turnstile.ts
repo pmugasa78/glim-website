@@ -16,6 +16,8 @@ declare global {
 }
 
 const SCRIPT_URL = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+/** Cloudflare's always-pass test key, for previews on this computer (matches .dev.vars). */
+const LOCAL_TEST_KEY = '1x00000000000000000000AA';
 let loading: Promise<Turnstile> | undefined;
 
 /** Loads Cloudflare's Turnstile script once, the first time a form needs it. */
@@ -49,7 +51,8 @@ export function turnstile(
 		loadTurnstile()
 			.then((api) => {
 				if (removed) return;
-				id = api.render(node, { sitekey, theme: 'light' });
+				const local = ['localhost', '127.0.0.1'].includes(location.hostname);
+				id = api.render(node, { sitekey: local ? LOCAL_TEST_KEY : sitekey, theme: 'light' });
 				widget.reset = () => id && api.reset(id);
 			})
 			.catch((error: unknown) => console.warn(error));
