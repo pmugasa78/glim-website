@@ -83,7 +83,8 @@
 		</li>
 		<li>
 			<strong>Expo</strong> (650 Industries, United States) and
-			<strong>Firebase Cloud Messaging</strong> deliver notifications to your phone.
+			<strong>Firebase Cloud Messaging</strong> (or Apple’s push service on iPhone) deliver notifications
+			to your phone.
 		</li>
 		<li><strong>Cloudflare</strong> hosts this website.</li>
 	</ul>

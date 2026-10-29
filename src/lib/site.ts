@@ -5,8 +5,9 @@ export const COMPANY_COUNTRY = 'South Africa';
 /** Support address. Placeholder until the real one is chosen; it must work before launch. */
 export const CONTACT_EMAIL = 'hello@glim.co.zw';
 
-/** Glim's Google Play listing. Null until it's published, which shows "Coming soon". */
+/** Glim's store listings. Null until it's published there, which shows "Coming soon". */
 export const PLAY_STORE_URL: string | null = null;
+export const APP_STORE_URL: string | null = null;
 
 /** When the privacy policy and terms last changed. */
 export const POLICY_UPDATED = '29 October 2026';

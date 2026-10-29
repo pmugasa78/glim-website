@@ -2,7 +2,7 @@
 	import { resolve } from '$app/paths';
 	import Bee from '#lib/brand/Bee.svelte';
 	import Skyline from '#lib/brand/Skyline.svelte';
-	import PlayButton from '#lib/components/PlayButton.svelte';
+	import StoreButton from '#lib/components/StoreButton.svelte';
 
 	const PROMISES = [
 		{
@@ -29,7 +29,10 @@
 				neighbours.
 			</p>
 			<div class="actions">
-				<PlayButton />
+				<div class="stores">
+					<StoreButton store="google" />
+					<StoreButton store="apple" />
+				</div>
 				<a class="text-link" href="#how-it-works">How it works</a>
 			</div>
 		</div>
@@ -123,13 +126,16 @@
 <section class="cta">
 	<div class="wrap cta-inner">
 		<Bee size={120} onLight />
-		<div>
+		<div class="cta-copy">
 			<h2>Be the first in your suburb</h2>
 			<p>
 				The more neighbours report, the better everyone knows. Glim is free and needs no account.
 			</p>
 		</div>
-		<PlayButton tone="sun" />
+		<div class="stores">
+			<StoreButton store="google" tone="sun" />
+			<StoreButton store="apple" tone="sun" />
+		</div>
 	</div>
 </section>
 
@@ -167,6 +173,12 @@
 		align-items: center;
 		gap: 16px 24px;
 		margin-top: 28px;
+	}
+
+	.stores {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 14px;
 	}
 
 	.text-link {
@@ -413,7 +425,7 @@
 		gap: 20px 32px;
 	}
 
-	.cta-inner div {
+	.cta-copy {
 		flex: 1 1 320px;
 	}
 
