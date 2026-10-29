@@ -125,7 +125,7 @@
 
 <section class="cta">
 	<div class="wrap cta-inner">
-		<Bee size={120} onLight />
+		<Bee size={120} onDark />
 		<div class="cta-copy">
 			<h2>Be the first in your suburb</h2>
 			<p>
