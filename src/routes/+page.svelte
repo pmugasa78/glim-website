@@ -82,8 +82,8 @@
 						>
 					</span>
 				</div>
-				<h3>One tap tells your neighbours</h3>
-				<p>Power off? Water cut? Internet down? Report it in a second. No typing.</p>
+				<h3>Report it in a second</h3>
+				<p>Tap the report button and pick what’s off or back. Your neighbours see it right away.</p>
 			</li>
 			<li class="step" {@attach reveal(240)}>
 				<div class="art art-alert" aria-hidden="true">
