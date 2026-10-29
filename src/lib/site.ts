@@ -1,0 +1,17 @@
+/** Who publishes Glim and how to reach them: used in the footer, privacy policy, terms and contact page. */
+export const COMPANY = 'Allison Labs Pty Ltd';
+export const COMPANY_COUNTRY = 'South Africa';
+
+/** Support address. Placeholder until the real one is chosen; it must work before launch. */
+export const CONTACT_EMAIL = 'hello@glim.co.zw';
+
+/** Glim's Google Play listing. Null until it's published, which shows "Coming soon". */
+export const PLAY_STORE_URL: string | null = null;
+
+/** When the privacy policy and terms last changed. */
+export const POLICY_UPDATED = '29 October 2026';
+
+export const SITE_URL = 'https://glim.co.zw';
+export const TAGLINE = 'Know before the lights go.';
+export const DESCRIPTION =
+	'See if the power, water or internet is on in your suburb, right now. Reported by your neighbours, free, and no account needed.';

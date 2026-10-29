@@ -1,0 +1,92 @@
+/* Glim's brand colours, matching the app's palette. */
+:root {
+	--sun: #ffd21f;
+	--sun-200: #ffdb4d;
+	--sun-100: #ffe784;
+	--sun-50: #fff3b0;
+	--sun-edge: #c99a06;
+	--ink: #1b2340;
+	--ink-soft: #3c4770;
+	--ink-muted: #4a5578;
+	--ink-faint: #7a84a8;
+	--ink-edge: #0e1328;
+	--field: #f0f3f9;
+	--field-border: #e1e7f0;
+	--power: #d99a00;
+	--power-soft: #fff1c2;
+	--water: #3b82f6;
+	--water-soft: #e1ecfd;
+	--internet: #7c5cff;
+	--internet-soft: #ede8ff;
+	--coral: #ff7a66;
+	--white: #ffffff;
+
+	--page-width: 1080px;
+	--gutter: 20px;
+
+	color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	-webkit-text-size-adjust: 100%;
+	scroll-behavior: smooth;
+}
+
+body {
+	margin: 0;
+	background: var(--white);
+	color: var(--ink);
+	font-family: 'Nunito Variable', 'Nunito', system-ui, sans-serif;
+	font-size: 17px;
+	line-height: 1.55;
+	-webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+	margin: 0;
+	font-weight: 900;
+	line-height: 1.12;
+	letter-spacing: -0.01em;
+}
+
+p {
+	margin: 0;
+}
+
+a {
+	color: inherit;
+}
+
+:focus-visible {
+	outline: 3px solid var(--ink);
+	outline-offset: 3px;
+	border-radius: 6px;
+}
+
+.wrap {
+	width: 100%;
+	max-width: var(--page-width);
+	margin: 0 auto;
+	padding: 0 var(--gutter);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		animation: none !important;
+		transition: none !important;
+	}
+}

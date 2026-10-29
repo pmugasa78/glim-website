@@ -1,0 +1,12 @@
+{
+	// Glim's website: prerendered SvelteKit pages served as Workers static assets, with no Worker code.
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "glim-website",
+	"compatibility_date": "2026-10-29",
+	"assets": {
+		"directory": "./build",
+		// /privacy serves privacy.html; unknown paths get our 404 page.
+		"html_handling": "auto-trailing-slash",
+		"not_found_handling": "404-page"
+	}
+}
