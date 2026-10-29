@@ -44,52 +44,66 @@
 	<meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-<a class="skip" href="#main">Skip to content</a>
+<div class="page">
+	<a class="skip" href="#main">Skip to content</a>
 
-<header class:on-sun={page.url.pathname === '/'}>
-	<div class="wrap bar">
-		<a class="brand" href={resolve('/')} aria-label="Glim home">
-			<Bee size={40} />
-			<span>Glim</span>
-		</a>
-		<nav aria-label="Main">
-			<a href="{resolve('/')}#how-it-works">How it works</a>
-			<a
-				href={resolve('/privacy')}
-				aria-current={page.url.pathname === '/privacy' ? 'page' : undefined}>Privacy</a
-			>
-			<a
-				href={resolve('/contact')}
-				aria-current={page.url.pathname === '/contact' ? 'page' : undefined}>Contact</a
-			>
-			<a class="beta" href={resolve('/beta')}>Join the beta</a>
-		</nav>
-	</div>
-</header>
+	<header class:on-sun={page.url.pathname === '/'}>
+		<div class="wrap bar">
+			<a class="brand" href={resolve('/')} aria-label="Glim home">
+				<Bee size={40} />
+				<span>Glim</span>
+			</a>
+			<nav aria-label="Main">
+				<a href="{resolve('/')}#how-it-works">How it works</a>
+				<a
+					href={resolve('/privacy')}
+					aria-current={page.url.pathname === '/privacy' ? 'page' : undefined}>Privacy</a
+				>
+				<a
+					href={resolve('/contact')}
+					aria-current={page.url.pathname === '/contact' ? 'page' : undefined}>Contact</a
+				>
+				<a class="beta" href={resolve('/beta')}>Join the beta</a>
+			</nav>
+		</div>
+	</header>
 
-<main id="main">
-	{@render children()}
-</main>
+	<main id="main">
+		{@render children()}
+	</main>
 
-<footer>
-	<div class="wrap foot">
-		<a class="brand" href={resolve('/')} aria-label="Glim home">
-			<Bee size={36} />
-			<span>Glim</span>
-		</a>
-		<nav aria-label="Footer">
-			<a href={resolve('/privacy')}>Privacy policy</a>
-			<a href={resolve('/terms')}>Terms of use</a>
-			<a href={resolve('/contact')}>Contact</a>
-		</nav>
-		<p class="legal">
-			© {year}
-			{COMPANY}. Glim reports come from the public and are not official utility notices.
-		</p>
-	</div>
-</footer>
+	<footer>
+		<div class="wrap foot">
+			<a class="brand" href={resolve('/')} aria-label="Glim home">
+				<Bee size={36} />
+				<span>Glim</span>
+			</a>
+			<nav aria-label="Footer">
+				<a href={resolve('/privacy')}>Privacy policy</a>
+				<a href={resolve('/terms')}>Terms of use</a>
+				<a href={resolve('/contact')}>Contact</a>
+			</nav>
+			<p class="legal">
+				© {year}
+				{COMPANY}. Glim reports come from the public and are not official utility notices.
+			</p>
+		</div>
+	</footer>
+</div>
 
 <style>
+	/* At least a screen tall, so the footer sits at the bottom of short pages. */
+	.page {
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+		min-height: 100dvh;
+	}
+
+	main {
+		flex: 1;
+	}
+
 	.skip {
 		position: absolute;
 		left: 12px;
