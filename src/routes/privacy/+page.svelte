@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import Prose from '#lib/components/Prose.svelte';
 	import {
 		COMPANY,
@@ -161,7 +162,8 @@
 		stops alerts and removes your alert settings from our servers, deletes your account (including
 		your Google sign-in, if you have one) and the updates you posted, and gives you a new random ID.
 		Reports and answers about outages you already sent stay in the anonymous history, but are no
-		longer connected to your phone or to you.
+		longer connected to your phone or to you. Without the app, you can
+		<a href={resolve('/delete-account')}>ask us to delete your account</a> by email.
 	</p>
 	<p>
 		Under South Africa’s Protection of Personal Information Act (POPIA) and Zimbabwe’s Cyber and

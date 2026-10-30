@@ -22,7 +22,8 @@
 	<h2>Privacy requests</h2>
 	<p>
 		To see, correct or delete information about you, email us with “Privacy” in the subject. Our
-		<a href={resolve('/privacy')}>privacy policy</a> explains what Glim keeps.
+		<a href={resolve('/privacy')}>privacy policy</a> explains what Glim keeps. To delete your
+		account, see <a href={resolve('/delete-account')}>Delete your account</a>.
 	</p>
 
 	<h2>Utilities, councils and partners</h2>
