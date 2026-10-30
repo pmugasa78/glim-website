@@ -18,4 +18,4 @@ export const POLICY_UPDATED = '30 October 2026';
 export const SITE_URL = 'https://getglim.app';
 export const TAGLINE = 'Power back yet?';
 export const DESCRIPTION =
-	'See if the power, water or internet is on in your suburb, right now. Reported by your neighbours, free, and no account needed.';
+	'See if the power, water or internet is on in your suburb, right now. Reported by your neighbours, free, and no sign-up needed to check or report.';

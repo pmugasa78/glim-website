@@ -7,8 +7,8 @@
 
 	const PROMISES = [
 		{
-			title: 'No account',
-			text: 'No sign-up, no password, no phone number. Open Glim and pick your suburb.'
+			title: 'No sign-up to check or report',
+			text: 'Open Glim and pick your suburb. You only sign in with Google to post an update, and neighbours never see who you are.'
 		},
 		{
 			title: 'Only your suburb',
@@ -89,6 +89,29 @@
 				<p>Power off? Water cut? Internet down? Report it in a second. No typing.</p>
 			</li>
 			<li class="step" {@attach reveal(240)}>
+				<div class="art art-room" aria-hidden="true">
+					<div class="room">
+						<div class="bubble">
+							<small>Glimmer #4821 · 18:52</small>
+							<span>ZESA truck on Churchill Rd</span>
+						</div>
+						<div class="bubble">
+							<small>Glimmer #1307 · 19:05</small>
+							<span>Transformer by the shops went bang</span>
+						</div>
+						<div class="causes">
+							<span class="cause picked">Fault <b>4</b></span>
+							<span class="cause">Load-shedding <b>1</b></span>
+						</div>
+					</div>
+				</div>
+				<h3>Hear what neighbours know</h3>
+				<p>
+					Every suburb has a room for power, water and internet. See what’s causing it and what
+					neighbours are seeing, and share what you know.
+				</p>
+			</li>
+			<li class="step" {@attach reveal(320)}>
 				<div class="art art-alert" aria-hidden="true">
 					<div class="notice">
 						<Bee size={40} />
@@ -127,7 +150,8 @@
 		<div class="cta-copy">
 			<h2>Be the first in your suburb</h2>
 			<p>
-				The more neighbours report, the better everyone knows. Glim is free and needs no account.
+				The more neighbours report, the better everyone knows. Glim is free, and checking or
+				reporting needs no account.
 			</p>
 		</div>
 		<div class="cta-action">
@@ -274,7 +298,7 @@
 		}
 	}
 
-	/* How it works: the three onboarding slides, side by side. */
+	/* How it works: the onboarding slides and the suburb rooms, two by two. */
 	.how {
 		padding: 72px 0 80px;
 	}
@@ -285,8 +309,8 @@
 
 	.steps {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: 24px;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 32px 24px;
 		margin: 36px 0 0;
 		padding: 0;
 		list-style: none;
@@ -422,6 +446,66 @@
 		font-size: 13px;
 		font-weight: 600;
 		color: var(--ink-muted);
+	}
+
+	.art-room {
+		background: var(--internet-soft);
+	}
+
+	.room {
+		display: grid;
+		gap: 8px;
+		width: min(86%, 340px);
+	}
+
+	.bubble {
+		display: grid;
+		justify-self: start;
+		padding: 9px 14px;
+		border-radius: 18px;
+		background: var(--white);
+		line-height: 1.3;
+		box-shadow: 0 4px 12px rgba(27, 35, 64, 0.08);
+	}
+
+	.bubble small {
+		font-size: 12px;
+		font-weight: 900;
+	}
+
+	.bubble span {
+		font-size: 14px;
+		font-weight: 600;
+	}
+
+	.causes {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 6px;
+		margin-top: 4px;
+	}
+
+	.cause {
+		padding: 6px 12px;
+		border-radius: 999px;
+		background: var(--white);
+		font-size: 13px;
+		font-weight: 800;
+	}
+
+	.cause b {
+		margin-left: 2px;
+		color: var(--ink-faint);
+		font-weight: 900;
+	}
+
+	.cause.picked {
+		background: var(--ink);
+		color: var(--white);
+	}
+
+	.cause.picked b {
+		color: var(--sun);
 	}
 
 	/* Promises */
