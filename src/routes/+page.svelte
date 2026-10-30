@@ -4,6 +4,51 @@
 	import Skyline from '#lib/brand/Skyline.svelte';
 	import StoreButton from '#lib/components/StoreButton.svelte';
 	import { reveal } from '#lib';
+	import { fly } from 'svelte/transition';
+
+	// What the hero's card cycles through: suburbs across Zimbabwe, each service, off and on.
+	const STATUSES = [
+		{
+			place: 'Avondale · Harare',
+			status: 'Power is on',
+			meta: 'Since 06:12 · 9 reports',
+			topic: 'power'
+		},
+		{
+			place: 'Mbare · Harare',
+			status: 'Water is off',
+			meta: 'Since 04:40 · 14 reports',
+			topic: 'water'
+		},
+		{
+			place: 'Hillside · Bulawayo',
+			status: 'Power is off',
+			meta: 'Since 18:40 · 6 reports',
+			topic: 'power'
+		},
+		{
+			place: 'Sakubva · Mutare',
+			status: 'Internet is down',
+			meta: 'Since 10:05 · 4 reports',
+			topic: 'internet'
+		},
+		{
+			place: 'Mkoba · Gweru',
+			status: 'Water is back',
+			meta: 'Since 07:30 · 5 reports',
+			topic: 'water'
+		}
+	];
+	const STATUS_MS = 3200;
+
+	let current = $state(0);
+
+	// Cycles the card, unless the visitor has asked for less motion.
+	$effect(() => {
+		if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+		const timer = setInterval(() => (current = (current + 1) % STATUSES.length), STATUS_MS);
+		return () => clearInterval(timer);
+	});
 
 	const PROMISES = [
 		{
@@ -39,9 +84,14 @@
 			<div class="rings"></div>
 			<div class="bee"><Bee size={220} /></div>
 			<div class="status-card">
-				<span class="place">Avondale · Harare</span>
-				<strong>Power is on</strong>
-				<span class="meta">Since 06:12 · 9 reports</span>
+				{#key current}
+					{@const status = STATUSES[current]}
+					<div class="status" in:fly={{ y: 8, duration: 350 }}>
+						<span class="place">{status.place}</span>
+						<strong><i class="dot {status.topic}"></i>{status.status}</strong>
+						<span class="meta">{status.meta}</span>
+					</div>
+				{/key}
 			</div>
 		</div>
 	</div>
@@ -278,6 +328,34 @@
 		border-radius: 20px;
 		background: var(--white);
 		box-shadow: 0 10px 30px rgba(27, 35, 64, 0.16);
+	}
+
+	/* Wide enough for every status, so the card doesn't change size as they cycle. */
+	.status {
+		display: grid;
+		gap: 2px;
+		min-width: 196px;
+	}
+
+	.dot {
+		display: inline-block;
+		width: 10px;
+		height: 10px;
+		margin-right: 8px;
+		border-radius: 50%;
+		vertical-align: 2px;
+	}
+
+	.dot.power {
+		background: var(--power);
+	}
+
+	.dot.water {
+		background: var(--water);
+	}
+
+	.dot.internet {
+		background: var(--internet);
 	}
 
 	.status-card .place,
