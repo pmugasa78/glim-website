@@ -29,11 +29,18 @@
 		<li>send reports you know are false, or for suburbs you aren’t in;</li>
 		<li>use scripts, bots or many devices to send reports;</li>
 		<li>try to break, overload or get around how Glim works;</li>
+		<li>
+			post updates that are abusive, false or unlawful, or that share someone’s personal details;
+		</li>
 		<li>send abusive or unlawful content through suggestions or feedback.</li>
 	</ul>
 	<p>
-		We may ignore, remove or limit reports and stop access for anyone who breaks these rules, to
-		keep Glim useful for everyone.
+		Updates are public and shown with your Glimmer name. You’re responsible for what you post, and
+		they reflect what neighbours say, not Glim’s view.
+	</p>
+	<p>
+		We may ignore, remove or limit reports and updates, and stop access for anyone who breaks these
+		rules, to keep Glim useful for everyone.
 	</p>
 
 	<h2>Your privacy</h2>
