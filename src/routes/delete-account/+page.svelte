@@ -12,7 +12,7 @@
 	<ol>
 		<li>Open Glim and tap the bee in the top corner to open the <strong>You</strong> screen.</li>
 		<li>
-			Under <strong>Privacy</strong>, tap <strong>Delete my data</strong>, then tap again to
+			Under <strong>Privacy</strong>, tap <strong>Delete my account</strong>, then tap again to
 			confirm.
 		</li>
 	</ol>

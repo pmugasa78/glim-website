@@ -40,8 +40,8 @@
 	<h2>What stays on your phone</h2>
 	<p>
 		Your chosen suburb and places, your notification settings, and a list of your recent reports are
-		stored only on your phone. They’re removed when you use <strong>Delete my data</strong> in the app
-		or uninstall it.
+		stored only on your phone. They’re removed when you use <strong>Delete my account</strong> in the
+		app or uninstall it.
 	</p>
 
 	<h2>What we collect, and why</h2>
@@ -101,7 +101,7 @@
 	<p>
 		If you allow notifications, we store your phone’s notification address (a push token), your
 		places and which alerts you want, so we can tell you when something changes. We delete these
-		when you turn alerts off or delete your data.
+		when you turn alerts off or delete your account.
 	</p>
 
 	<h3>Suggestions and feedback</h3>
@@ -150,19 +150,19 @@
 			Reports count towards a suburb’s live status for a few hours, then become part of the
 			anonymous outage history, which we keep to study and predict outages.
 		</li>
-		<li>Updates are deleted 30 days after you post them, or when you delete your data.</li>
-		<li>Your Google sign-in is kept until you delete your data.</li>
-		<li>Alert settings are kept until you turn alerts off or delete your data.</li>
+		<li>Updates are deleted 30 days after you post them, or when you delete your account.</li>
+		<li>Your Google sign-in is kept until you delete your account.</li>
+		<li>Alert settings are kept until you turn alerts off or delete your account.</li>
 		<li>Feedback is kept for as long as it helps us improve Glim.</li>
 	</ul>
 
 	<h2>Your choices and rights</h2>
 	<p>
-		<strong>Delete my data</strong>, on the You screen in the app, forgets everything on your phone,
-		stops alerts and removes your alert settings from our servers, deletes your account (including
-		your Google sign-in, if you have one) and the updates you posted, and gives you a new random ID.
-		Reports and answers about outages you already sent stay in the anonymous history, but are no
-		longer connected to your phone or to you. Without the app, you can
+		<strong>Delete my account</strong>, on the You screen in the app, forgets everything on your
+		phone, stops alerts and removes your alert settings from our servers, deletes your account
+		(including your Google sign-in, if you have one) and the updates you posted, and gives you a new
+		random ID. Reports and answers about outages you already sent stay in the anonymous history, but
+		are no longer connected to your phone or to you. Without the app, you can
 		<a href={resolve('/delete-account')}>ask us to delete your account</a> by email.
 	</p>
 	<p>
