@@ -13,7 +13,7 @@ export const APP_STORE_URL: string | null = null;
 export const WHATSAPP_GROUP_URL: string | null = 'https://chat.whatsapp.com/BqK9vWZ71McE0kyUR0E5F4';
 
 /** When the privacy policy and terms last changed. */
-export const POLICY_UPDATED = '29 October 2026';
+export const POLICY_UPDATED = '30 October 2026';
 
 export const SITE_URL = 'https://getglim.app';
 export const TAGLINE = 'Power back yet?';
