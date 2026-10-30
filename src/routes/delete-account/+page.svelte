@@ -12,7 +12,8 @@
 	<ol>
 		<li>Open Glim and tap the bee in the top corner to open the <strong>You</strong> screen.</li>
 		<li>
-			Under <strong>Privacy</strong>, tap <strong>Clear my data</strong>, then tap again to confirm.
+			Under <strong>Privacy</strong>, tap <strong>Delete my data</strong>, then tap again to
+			confirm.
 		</li>
 	</ol>
 	<p>This deletes your account straight away. You need to be online for it to reach our servers.</p>
