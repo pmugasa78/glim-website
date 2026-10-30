@@ -6,7 +6,7 @@
 	import { onNavigate } from '$app/navigation';
 	import { page } from '$app/state';
 	import Bee from '#lib/brand/Bee.svelte';
-	import { COMPANY, DESCRIPTION, SITE_URL, TAGLINE } from '#lib';
+	import { COMPANY, COMPANY_REGISTRATION, DESCRIPTION, SITE_URL, TAGLINE } from '#lib';
 	import type { LayoutProps } from './$types';
 
 	let { children }: LayoutProps = $props();
@@ -85,7 +85,8 @@
 			</nav>
 			<p class="legal">
 				© {year}
-				{COMPANY}. Glim reports come from the public and are not official utility notices.
+				{COMPANY} (reg. no. {COMPANY_REGISTRATION}). Glim reports come from the public and are not
+				official utility notices.
 			</p>
 		</div>
 	</footer>

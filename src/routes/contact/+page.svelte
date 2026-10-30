@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import Prose from '#lib/components/Prose.svelte';
-	import { CONTACT_EMAIL } from '#lib';
+	import { COMPANY, COMPANY_COUNTRY, COMPANY_REGISTRATION, CONTACT_EMAIL } from '#lib';
 </script>
 
 <Prose title="Contact" intro="Questions, problems or ideas? We read every message.">
@@ -28,6 +28,13 @@
 	<h2>Utilities, councils and partners</h2>
 	<p>
 		If you’d like to work with us on outage information for your area, we’d love to hear from you.
+	</p>
+
+	<h2>Who makes Glim</h2>
+	<p>
+		Glim is made by <strong>{COMPANY}</strong>, a private company registered in {COMPANY_COUNTRY}
+		(registration number {COMPANY_REGISTRATION}). For anything about the company, email
+		<a href="mailto:{CONTACT_EMAIL}">{CONTACT_EMAIL}</a>.
 	</p>
 </Prose>
 

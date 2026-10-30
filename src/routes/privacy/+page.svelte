@@ -1,6 +1,12 @@
 <script lang="ts">
 	import Prose from '#lib/components/Prose.svelte';
-	import { COMPANY, COMPANY_COUNTRY, CONTACT_EMAIL, POLICY_UPDATED } from '#lib';
+	import {
+		COMPANY,
+		COMPANY_COUNTRY,
+		COMPANY_REGISTRATION,
+		CONTACT_EMAIL,
+		POLICY_UPDATED
+	} from '#lib';
 </script>
 
 <Prose
@@ -10,8 +16,9 @@
 >
 	<h2>Who we are</h2>
 	<p>
-		Glim is made by <strong>{COMPANY}</strong>, a company registered in {COMPANY_COUNTRY} (“we”, “us”).
-		We decide how the information described here is used. You can reach us at
+		Glim is made by <strong>{COMPANY}</strong>, a company registered in {COMPANY_COUNTRY} under registration
+		number {COMPANY_REGISTRATION} (“we”, “us”). We decide how the information described here is used.
+		You can reach us at
 		<a href="mailto:{CONTACT_EMAIL}">{CONTACT_EMAIL}</a>.
 	</p>
 

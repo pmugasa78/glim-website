@@ -1,6 +1,8 @@
 /** Who publishes Glim and how to reach them: used in the footer, privacy policy, terms and contact page. */
 export const COMPANY = 'Allison Labs Pty Ltd';
 export const COMPANY_COUNTRY = 'South Africa';
+/** CIPC registration number, shown so app stores and visitors can check who publishes Glim. */
+export const COMPANY_REGISTRATION = '2026/527963/07';
 
 /** Support address. Its mailbox (or forwarding) must work before launch. */
 export const CONTACT_EMAIL = 'hello@getglim.app';
